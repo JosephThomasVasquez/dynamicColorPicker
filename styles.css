@@ -57,7 +57,9 @@ h3 {
   }
 
   .primary-color-swatch, .secondary-color-swatch, .tertiary-color-swatch {
-      background-color: #d3d3d3;
+      background-color: hsl(50, 100%, 50%);
       width: 100%;
       padding: 10% 1%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   }
