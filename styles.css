@@ -1,60 +1,101 @@
 
+:root {
+    --font-main: 'Muli', sans-serif;
+}
+
+.title, div, input {
+    font-family: var(--font-main);
+}
+
+h2 {
+    font-size: 40px;
+}
+
+div {
+    font-size: 18px;
+}
+
 .title {
     text-align: center;
+    color: white;
     background-color: darkgray;
-    width: 25%;
-    padding: 1%;
+    width: 100%;
+    padding: 1% 0;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 15px 15px 0 0;
 }
 
-h3 {
+.fas {
+    margin: 0 10px;
+}
+
+h2, h3 {
     text-align: center;
+    margin-top: 1%;
 }
 
-.input-hex {
+.container {
     width: 50%;
-    padding: 2% 0;
-    margin: 5% auto;
+    margin: auto;
+    margin-top: 5%;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.input-hsl {
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 50%;
+    padding: 0.5% 0;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .slidecontainer {
-    width: 25%; /* Width of the outside container */
+    width: 50%; /* Width of the outside container */
     margin: auto;
   }
   
   /* The slider itself */
-  .slider, .slider-hue, .pri-slider {
+  .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
     height: 5px; /* Specified height */
     margin: 5% 0;
     background: #d3d3d3; /* Grey background */
-    border-radius: 2px;
+    border-radius: 5px;
     outline: none; /* Remove outline */
     opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 2px solid rgba(0, 0, 0, 0.25);
   }
   
   /* Mouse-over effects */
-  .slider:hover, .slider-hue:hover {
+  .slider:hover {
     opacity: 1; /* Fully shown on mouse-over */
   }
   
   /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb, .slider-hue::-webkit-slider-thumb, .pri-slider::-webkit-slider-thumb {
+  .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
+    width: 0px; /* Set a specific slider handle width */
+    height: 0px; /* Slider handle height */
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    background: rgb(68, 68, 68); /* Green background */
+    
     cursor: pointer; /* Cursor on hover */
   }
   
-  .slider::-moz-range-thumb, .slider-hue::-moz-range-thumb, .pri-slider::-moz-range-thumb {
+  .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
     border-radius: 50%;
@@ -62,10 +103,11 @@ h3 {
     cursor: pointer; /* Cursor on hover */
   }
 
-  .primary-color-swatch, .secondary-color-swatch, .tertiary-color-swatch, .pri-swatch {
+  .primary-color-swatch {
       
       width: 100%;
       padding: 10% 0;
+      margin-bottom: 5%;
       border: 2px solid white;
       border-radius: 40px;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);

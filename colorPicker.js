@@ -4,37 +4,41 @@
 const sliderContainer = document.querySelector('.slidecontainer');
 
 
-createColorPicker(1);
+createColorPicker();
 
 // Create a color picker
-function createColorPicker(number) {
+function createColorPicker(colorText) {
 
+    const colorNum = [];
     
     // HSL input attributes
     const hueAttributes = {
-        id: 'hue1',
+        name: 'hue1',
         type: 'range',
-        min: '1',
+        min: '0',
         max: '360',
         value: '180',
+        step: '1',
         class: 'slider'
     }
 
     const satAttributes = {
-        id: 'sat1',
+        name: 'sat1',
         type: 'range',
-        min: '1',
+        min: '0',
         max: '100',
         value: '50',
+        step: '1',
         class: 'slider'
     }
 
     const lightAttributes = {
-        id: 'light1',
+        name: 'light1',
         type: 'range',
-        min: '1',
+        min: '0',
         max: '100',
         value: '50',
+        step: '1',
         class: 'slider'
     }
 
@@ -51,12 +55,12 @@ function createColorPicker(number) {
       createHSLSlider();
       createHSLSlider();
 
-      // Create HSL Slider
+      // Create HSL Slider ----------------------------------------------------------
       function createHSLSlider() {
 
         // Create the elements
         const colorTitleElement = document.createElement('h3');
-        colorTitleElement.textContent = 'Primary Color';
+        colorTitleElement.textContent = 'Color';
 
         const hLabel = document.createElement('div');
         hLabel.textContent = 'Hue';
@@ -93,27 +97,33 @@ function createColorPicker(number) {
       // Update slider values and color swatch
         function updateSliderValue(hVal, sVal, lVal, swatch) {
 
+            const hslLabel = document.createElement('input');
+            swatch.appendChild(hslLabel);
+            hslLabel.classList.add('input-hsl');
+
+            swatch.style.background = `hsl(
+                ${Math.floor(Math.random() * hVal.max)},
+                 ${Math.floor(Math.random() * sVal.max)}%, 
+                 ${Math.floor(Math.random() * lVal.max)}%)`;
+            
+            hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+            
             const hslValues = [];
 
             hVal.oninput = () => {
-
                 hslValues[0] = hVal.value;
-                console.log(hslValues[0]);
-                swatch.style.background = `hsl(${hVal.value},${sVal.value}%,${lVal.value}%)`;
+                hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+                swatch.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
             }
             sVal.oninput = () => {
-
                 hslValues[1] = sVal.value;
-                console.log(hslValues[1]);
-                swatch.style.background = `hsl(${hVal.value},${sVal.value}%,${lVal.value}%)`;
+                hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+                swatch.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
             }
             lVal.oninput = () => {
-
                 hslValues[2] = lVal.value;
-                console.log(hslValues[2]);
-                swatch.style.background = `hsl(${hVal.value},${sVal.value}%,${lVal.value}%)`;
-            }
-            
+                hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+                swatch.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+            }   
         };
-
-}
+};
