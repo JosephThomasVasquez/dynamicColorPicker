@@ -1,14 +1,12 @@
 
+@import url("mediaq.css");
+
 :root {
     --font-main: 'Muli', sans-serif;
 }
 
 .title, div, input {
     font-family: var(--font-main);
-}
-
-h2 {
-    font-size: 40px;
 }
 
 div {

@@ -1,0 +1,61 @@
+
+
+@media only screen and (max-width: 600px) {
+
+    .title {
+        font-size: 4vw;
+    }
+
+    div {
+        font-size: 3vw !important;
+    }
+
+    h2, h3 {
+        text-align: center;
+        margin-top: 1%;
+        font-size: 3vw !important;
+    }
+
+    .container {
+        width: 100% !important;
+    }
+
+    .slider {
+        margin: 5% 0 !important;
+    }
+
+    .input-hsl {
+        width: 45vw !important;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .title {
+        font-size: 4vw;
+    }
+
+    div {
+        font-size: 3vw !important;
+    }
+
+    h2, h3 {
+        text-align: center;
+        margin-top: 1%;
+        font-size: 3vw !important;
+    }
+
+    .container {
+        width: 100% !important;
+    }
+
+    .slider {
+        margin: 5% 0 !important;
+    }
+
+    .input-hsl {
+        width: 45vw !important;
+    }
+
+}
