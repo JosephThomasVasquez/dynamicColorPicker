@@ -106,13 +106,21 @@ function createColorPicker(colorText) {
             swatch.appendChild(hslLabel);
             hslLabel.classList.add('input-hsl');
 
-            swatch.style.background = `hsl(
-                ${Math.floor(Math.random() * hVal.max)},
-                 ${Math.floor(Math.random() * sVal.max)}%, 
-                 ${Math.floor(Math.random() * lVal.max)}%)`;
-            
-            hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-            
+            randomizeColor();
+
+            // Randomize HSL Values
+            function randomizeColor() {
+
+                const colorArray = [
+                    Math.floor(Math.random() * hVal.max),
+                    Math.floor(Math.random() * sVal.max),
+                    Math.floor(Math.random() * lVal.max)];
+
+                    hslLabel.value = `hsl(${colorArray[0]}, ${colorArray[1]}%, ${colorArray[2]}%)`;
+                    swatch.style.background = `hsl(${colorArray[0]}, ${colorArray[1]}%, ${colorArray[2]}%)`;
+                    console.log(colorArray);
+            }
+        
             const hslValues = [];
 
             hVal.oninput = () => {
