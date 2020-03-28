@@ -9,6 +9,13 @@ createColorPicker();
 // Create a color picker
 function createColorPicker(colorText) {
 
+    const addPicker = document.querySelector('.btn-add');
+    console.log(addPicker);
+
+    addPicker.addEventListener('click', () => {
+        createHSLSlider();
+    });
+
     const colorNum = [];
     
     // HSL input attributes
@@ -51,8 +58,6 @@ function createColorPicker(colorText) {
 
     };
 
-      createHSLSlider();
-      createHSLSlider();
       createHSLSlider();
 
       // Create HSL Slider ----------------------------------------------------------
