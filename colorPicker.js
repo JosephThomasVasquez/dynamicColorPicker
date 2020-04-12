@@ -64,39 +64,46 @@ function createColorPicker(colorText) {
       function createHSLSlider() {
 
         // Create the elements
+
+        const elements = {
+            div: document.createElement('div'),
+            input: document.createElement('input')
+        };
+
+        // Constructor function for creating html elements
+
+        function CreateHTMLElement(type, name, attachment) {
+            this.type = document.createElement(type);
+            this.name = this.type.textContent = name;
+            this.attachment = attachment.appendChild(this.type);
+        };
+    
+
         const colorTitleElement = document.createElement('h3');
         colorTitleElement.textContent = 'Color';
-
-        const hLabel = document.createElement('div');
-        hLabel.textContent = 'Hue';
-        const sLabel = document.createElement('div');
-        sLabel.textContent = 'Saturation';
-        const lLabel = document.createElement('div');
-        lLabel.textContent = 'Lightness';
-
-        const hueSlider = document.createElement('input');
-        const satSlider = document.createElement('input');
-        const lightSlider = document.createElement('input');
 
         const colorSwatch = document.createElement('div');
         colorSwatch.classList.add('primary-color-swatch');
 
         // Append all child elements to div container
         colorTitleElement.appendChild(colorSwatch);
-        colorTitleElement.appendChild(hueSlider);
-        colorTitleElement.appendChild(hLabel);
-        colorTitleElement.appendChild(satSlider);
-        colorTitleElement.appendChild(sLabel);
-        colorTitleElement.appendChild(lightSlider);
-        colorTitleElement.appendChild(lLabel);
+        const hLabel = new CreateHTMLElement('div', 'Hue', colorTitleElement);
+        const hueSlider = new CreateHTMLElement('input', null, colorTitleElement);
+    
+        const sLabel = new CreateHTMLElement('div', 'Saturation', colorTitleElement);
+        const satSlider = new CreateHTMLElement('input', null, colorTitleElement);
+
+        const lLabel = new CreateHTMLElement('div', 'Lightness', colorTitleElement);
+        const lightSlider = new CreateHTMLElement('input', null, colorTitleElement);
+
         sliderContainer.appendChild(colorTitleElement);
         
         // Assign attributes to hue, saturation, and light inputs
-        setInputAttributes(hueSlider, hueAttributes);
-        setInputAttributes(satSlider, satAttributes);
-        setInputAttributes(lightSlider, lightAttributes);
+        setInputAttributes(hueSlider.type, hueAttributes);
+        setInputAttributes(satSlider.type, satAttributes);
+        setInputAttributes(lightSlider.type, lightAttributes);
 
-        updateSliderValue(hueSlider, satSlider, lightSlider, colorSwatch);
+        updateSliderValue(hueSlider.type, satSlider.type, lightSlider.type, colorSwatch);
       }
 
       // Update slider values and color swatch
