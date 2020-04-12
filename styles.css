@@ -33,11 +33,16 @@ h2, h3 {
     font-size: 1rem;
 }
 
+.main-container {
+    width: 100%;
+    padding: 0;
+    margin: auto;
+}
+
 .container {
     display: inline-block;
     width: 25%;
-    margin: 0;
-    margin-top: 1%;
+    margin: 1% 0 0 25% ;
     border: 2px solid rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     background-color: white;
@@ -47,8 +52,9 @@ h2, h3 {
 .sample-container {
     display: block;
     float: right;
-    width: 40%;
-    margin-right: 17%;
+    width: 25%;
+    padding-right: 24%;
+    margin: 0;
     margin-top: 1%;
 }
 
@@ -120,7 +126,6 @@ h2, h3 {
     width: 100%;
     padding: 10% 0;
     margin: auto;
-    border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
