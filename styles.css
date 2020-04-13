@@ -18,7 +18,7 @@ div {
     color: white;
     background-color: darkgray;
     width: 100%;
-    padding: 1% 0;
+    padding: 0;
     margin: auto;
     border-radius: 15px 15px 0 0;
 }
@@ -34,15 +34,26 @@ h2, h3 {
 }
 
 .main-container {
+    display: flex;
     width: 100%;
     padding: 0;
     margin: auto;
 }
 
-.container {
+.container-1 {
     display: inline-block;
     width: 25%;
-    margin: 1% 0 0 25% ;
+    margin: 1% 0 0 24%;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.container-2 {
+    float: right;
+    width: 25%;
+    margin: 1% 25% 0 0;
     border: 2px solid rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     background-color: white;
@@ -50,12 +61,16 @@ h2, h3 {
 }
 
 .sample-container {
-    display: block;
-    float: right;
-    width: 25%;
-    padding-right: 24%;
-    margin: 0;
-    margin-top: 1%;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.color-sample {
+    width: 90%;
+    padding: 15% 0;
+    margin: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .input-hsl {
@@ -118,13 +133,6 @@ h2, h3 {
     margin: auto;
     border: 1px solid white;
     border-radius: 40px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.color-sample {
-    width: 100%;
-    padding: 10% 0;
-    margin: auto;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 

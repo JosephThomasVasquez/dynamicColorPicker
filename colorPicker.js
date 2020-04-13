@@ -67,18 +67,22 @@ function createColorPicker(colorText) {
       input: document.createElement("input"),
     };
 
-    // Constructor function for creating html elements
-    function CreateHTMLElement(type, name, attachment) {
-      this.type = document.createElement(type);
-      this.name = this.type.textContent = name;
-      this.attachment = attachment.appendChild(this.type);
-    }
+      // Create classes for creating html elements
+      class CreateHTMLElement {
+          constructor(type, name, attachment) {
+              this.type = document.createElement(type);
+              this.name = this.type.textContent = name;
+              this.attachment = attachment.appendChild(this.type);
+          }
+      }
 
-    // Create Color Sample
-    function CreateSample(color, attachment) {
-      this.color = document.createElement(color);
-      this.attachment = attachment.appendChild(this.color);
-    }
+      // Create Color Sample Class
+      class CreateSample {
+          constructor(color, attachment) {
+              this.color = document.createElement(color);
+              this.attachment = attachment.appendChild(this.color);
+          }
+      }
 
     const colorTitleElement = document.createElement("h3");
     colorTitleElement.textContent = `Color #${colorName++}`;
@@ -86,7 +90,8 @@ function createColorPicker(colorText) {
     const colorSwatch = document.createElement("div");
     colorSwatch.classList.add("primary-color-swatch");
 
-    // Append all child elements to div container
+    // create labels and slider html elements
+    // i.e. CreateHTMLElement('tag type', 'name', html element to appendChild())
     colorTitleElement.appendChild(colorSwatch);
 
     const colorSample = new CreateSample("div", displayContainer);
@@ -95,11 +100,7 @@ function createColorPicker(colorText) {
     const hLabel = new CreateHTMLElement("div", "Hue", colorTitleElement);
     const hueSlider = new CreateHTMLElement("input", null, colorTitleElement);
 
-    const sLabel = new CreateHTMLElement(
-      "div",
-      "Saturation",
-      colorTitleElement
-    );
+    const sLabel = new CreateHTMLElement("div", "Saturation", colorTitleElement);
     const satSlider = new CreateHTMLElement("input", null, colorTitleElement);
 
     const lLabel = new CreateHTMLElement("div", "Lightness", colorTitleElement);
@@ -137,9 +138,7 @@ function createColorPicker(colorText) {
 
     // Randomize HSL Values
     function randomizeColor() {
-      hslLabel.value = `hsl(${colorArray[0]}, ${colorArray[1]}%, ${colorArray[2]}%)`;
-      swatch.style.background = `hsl(${colorArray[0]}, ${colorArray[1]}%, ${colorArray[2]}%)`;
-      sample.style.background = `hsl(${colorArray[0]}, ${colorArray[1]}%, ${colorArray[2]}%)`;
+      hslLabel.value = swatch.style.background = sample.style.background = `hsl(${colorArray[0]}, ${colorArray[1]}%, ${colorArray[2]}%)`;
       hVal.value = colorArray[0];
       sVal.value = colorArray[1];
       lVal.value = colorArray[2];
@@ -150,23 +149,15 @@ function createColorPicker(colorText) {
 
     hVal.oninput = () => {
       hslValues[0] = hVal.value;
-      hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-      swatch.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-      sample.style.background = swatch.style.background;
+      hslLabel.value = swatch.style.background = sample.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
     };
     sVal.oninput = () => {
-
       hslValues[1] = sVal.value;
-      hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-      swatch.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-      sample.style.background = swatch.style.background;
+      hslLabel.value = swatch.style.background = sample.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
     };
     lVal.oninput = () => {
-
       hslValues[2] = lVal.value;
-      hslLabel.value = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-      swatch.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
-      sample.style.background = swatch.style.background;
+      hslLabel.value = swatch.style.background = sample.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
     };
   }
 }
