@@ -1,6 +1,7 @@
 // // DOM
 
 // Main div - container for all color pickers
+const toolBar = document.querySelector('.toolbar');
 const displayContainer = document.querySelector(".sample-container");
 const sliderContainer = document.querySelector(".slidecontainer");
 let colorName = 1;
