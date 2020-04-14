@@ -46,6 +46,18 @@ h2, h3 {
     margin: 0;
 }
 
+.hex-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 1%;
+    margin: 0 auto;
+}
+
+.hex-input {
+    width: 25%;
+    padding: 0.5%;
+}
+
 /* Containers */
 .main-container {
     display: flex;

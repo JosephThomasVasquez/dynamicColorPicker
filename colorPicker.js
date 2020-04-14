@@ -1,7 +1,8 @@
 // // DOM
 
 // Main div - container for all color pickers
-const toolBar = document.querySelector('.toolbar');
+const toolBar = document.querySelector(".toolbar");
+const hexInput = document.querySelector(".hex-input");
 const displayContainer = document.querySelector(".sample-container");
 const sliderContainer = document.querySelector(".slidecontainer");
 let colorName = 1;
@@ -11,13 +12,89 @@ createColorPicker();
 // Create a color picker
 function createColorPicker(colorText) {
   const addPicker = document.querySelector(".btn-add");
-  console.log(addPicker);
 
   addPicker.addEventListener("click", () => {
     createHSLSlider();
   });
 
-  const colorNum = [];
+  const colorType = [];
+
+  class ColorType {
+    constructor(
+      name,
+      type,
+      min1,
+      min2,
+      min3,
+      max1,
+      max2,
+      max3,
+      value,
+      step,
+      className
+    ) {
+      this.name = name;
+      this.type = type;
+      this.min1 = min1;
+      this.min2 = min2;
+      this.min3 = min3;
+      this.max1 = max1;
+      this.max2 = max2;
+      this.max3 = max3;
+      this.value = value;
+      this.step = step;
+      this.className = className;
+    }
+  }
+
+  const CreateHSLSlider = new ColorType(
+    "HSL",
+    "range",
+    "0",
+    "0",
+    "0",
+    "360",
+    "100",
+    "100",
+    "180",
+    "1",
+    "slider"
+  );
+  const CreateRGBSlider = new ColorType(
+    "RGB",
+    "range",
+    "0",
+    "0",
+    "0",
+    "255",
+    "255",
+    "255",
+    "255",
+    "1",
+    "slider"
+  );
+
+  //   console.log('The RGB Slider:', CreateRGBSlider);
+
+  const createInputs = document.createElement("input");
+
+  setColorTypeAttributes(createInputs, CreateRGBSlider);
+
+  //   console.log('The Input element:', createInputs);
+
+  const a = 136;
+
+  const toHex = a.toString(16);
+
+  console.log("The new Value is:", toHex);
+
+  hexInput.value = toHex + toHex + toHex;
+
+  function setColorTypeAttributes(element, attributes) {
+    for (let key in attributes) {
+      element.setAttribute(key, attributes[key]);
+    }
+  }
 
   // HSL input attributes
   const hueAttributes = {
@@ -68,22 +145,22 @@ function createColorPicker(colorText) {
       input: document.createElement("input"),
     };
 
-      // Create classes for creating html elements
-      class CreateHTMLElement {
-          constructor(type, name, attachment) {
-              this.type = document.createElement(type);
-              this.name = this.type.textContent = name;
-              this.attachment = attachment.appendChild(this.type);
-          }
+    // Create classes for creating html elements
+    class CreateHTMLElement {
+      constructor(type, name, attachment) {
+        this.type = document.createElement(type);
+        this.name = this.type.textContent = name;
+        this.attachment = attachment.appendChild(this.type);
       }
+    }
 
-      // Create Color Sample Class
-      class CreateSample {
-          constructor(color, attachment) {
-              this.color = document.createElement(color);
-              this.attachment = attachment.appendChild(this.color);
-          }
+    // Create Color Sample Class
+    class CreateSample {
+      constructor(color, attachment) {
+        this.color = document.createElement(color);
+        this.attachment = attachment.appendChild(this.color);
       }
+    }
 
     const colorTitleElement = document.createElement("h3");
     colorTitleElement.textContent = `Color #${colorName++}`;
@@ -101,7 +178,11 @@ function createColorPicker(colorText) {
     const hLabel = new CreateHTMLElement("div", "Hue", colorTitleElement);
     const hueSlider = new CreateHTMLElement("input", null, colorTitleElement);
 
-    const sLabel = new CreateHTMLElement("div", "Saturation", colorTitleElement);
+    const sLabel = new CreateHTMLElement(
+      "div",
+      "Saturation",
+      colorTitleElement
+    );
     const satSlider = new CreateHTMLElement("input", null, colorTitleElement);
 
     const lLabel = new CreateHTMLElement("div", "Lightness", colorTitleElement);
