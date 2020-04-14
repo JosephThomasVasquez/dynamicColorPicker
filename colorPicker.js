@@ -3,6 +3,7 @@
 // Main div - container for all color pickers
 const toolBar = document.querySelector(".toolbar");
 const hexInput = document.querySelector(".hex-input");
+const rgbInput = document.querySelector(".rgb-input");
 const displayContainer = document.querySelector(".sample-container");
 const sliderContainer = document.querySelector(".slidecontainer");
 let colorName = 1;
@@ -82,13 +83,71 @@ function createColorPicker(colorText) {
 
   //   console.log('The Input element:', createInputs);
 
-  const a = 136;
+  const a = 135;
 
   const toHex = a.toString(16);
 
   console.log("The new Value is:", toHex);
 
-  hexInput.value = toHex + toHex + toHex;
+  hexInput.value = toHex;
+
+  // Functions converts hsl values to rgb using formula from - https://css-tricks.com/converting-color-spaces-in-javascript/
+  function hslToRgb(h, s, l) {
+    s /= 100;
+    l /= 100;
+
+    let c = (1 - Math.abs(2 * l - 1)) * s;
+    let x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+    let m = l - c / 2;
+    let r = 0;
+    let g = 0;
+    let b = 0;
+
+    if (0 <= h && h < 60) {
+      r = c;
+      g = x;
+      b = 0;
+    }else if (60 <= h && h < 120) {
+      r = x;
+      g = c;
+      b = 0;
+    }else if (120 <= h && h < 180) {
+      r = 0;
+      g = c;
+      b = x;
+    }else if (180 <= h && h < 240) {
+      r = 0;
+      g = x;
+      b = c;
+    }else if (240 <= h && h < 300) {
+      r = x;
+      g = 0;
+      b = c;
+    }else if (300 <= h && h < 360) {
+      r = c;
+      g = 0;
+      b = x;
+    }
+
+    r = Math.round((r + m) * 255);
+    g = Math.round((g + m) * 255);
+    b = Math.round((b + m) * 255);
+
+    rgbToHex(r, g, b);
+
+    return hexInput.value = `rgb(${r}, ${g}, ${b})`;
+  };
+
+  function rgbToHex(r, g, b) {
+    let rHex = r.toString(16);
+    let gHex = g.toString(16);
+    let bHex = b.toString(16);
+
+    return rgbInput.value = `#${rHex}${gHex}${bHex}`;
+  }
+
+  //To test hslToRgb
+  hslToRgb(90,100,50);
 
   function setColorTypeAttributes(element, attributes) {
     for (let key in attributes) {
@@ -224,6 +283,7 @@ function createColorPicker(colorText) {
       hVal.value = colorArray[0];
       sVal.value = colorArray[1];
       lVal.value = colorArray[2];
+      hexInput.value = hslToRgb(colorArray[0], colorArray[1], colorArray[2]);
       console.log(colorArray);
     }
 
@@ -232,14 +292,17 @@ function createColorPicker(colorText) {
     hVal.oninput = () => {
       hslValues[0] = hVal.value;
       hslLabel.value = swatch.style.background = sample.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+      hexInput.value = hslToRgb(hVal.value, sVal.value, lVal.value);
     };
     sVal.oninput = () => {
       hslValues[1] = sVal.value;
       hslLabel.value = swatch.style.background = sample.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+      hexInput.value = hslToRgb(hVal.value, sVal.value, lVal.value);
     };
     lVal.oninput = () => {
       hslValues[2] = lVal.value;
       hslLabel.value = swatch.style.background = sample.style.background = `hsl(${hVal.value}, ${sVal.value}%, ${lVal.value}%)`;
+      hexInput.value = hslToRgb(hVal.value, sVal.value, lVal.value);
     };
   }
 }

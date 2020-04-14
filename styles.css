@@ -53,8 +53,8 @@ h2, h3 {
     margin: 0 auto;
 }
 
-.hex-input {
-    width: 25%;
+.hex-input, .rgb-input {
+    width: 80%;
     padding: 0.5%;
 }
 
