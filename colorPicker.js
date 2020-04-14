@@ -138,12 +138,20 @@ function createColorPicker(colorText) {
     return hexInput.value = `rgb(${r}, ${g}, ${b})`;
   };
 
+  // Broken, as the digits do not equate to the propper hexadecimal values 
   function rgbToHex(r, g, b) {
-    let rHex = r.toString(16);
-    let gHex = g.toString(16);
-    let bHex = b.toString(16);
 
-    return rgbInput.value = `#${rHex}${gHex}${bHex}`;
+    
+    if (r.length === 1) {
+      r = '0' + r.toString(16);
+    }else if (g.length === 1) {
+      g = '0' + g.toString(16);
+    }
+    else if (b.length === 1) {
+      b = '0' + b.toString(16);
+    }
+    console.log(`rgb Values: ${r},${g},${b}`);
+    return rgbInput.value = `#${r}${g}${b}`;
   }
 
   //To test hslToRgb
