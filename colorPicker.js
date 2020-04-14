@@ -107,23 +107,23 @@ function createColorPicker(colorText) {
       r = c;
       g = x;
       b = 0;
-    }else if (60 <= h && h < 120) {
+    } else if (60 <= h && h < 120) {
       r = x;
       g = c;
       b = 0;
-    }else if (120 <= h && h < 180) {
+    } else if (120 <= h && h < 180) {
       r = 0;
       g = c;
       b = x;
-    }else if (180 <= h && h < 240) {
+    } else if (180 <= h && h < 240) {
       r = 0;
       g = x;
       b = c;
-    }else if (240 <= h && h < 300) {
+    } else if (240 <= h && h < 300) {
       r = x;
       g = 0;
       b = c;
-    }else if (300 <= h && h < 360) {
+    } else if (300 <= h && h < 360) {
       r = c;
       g = 0;
       b = x;
@@ -135,27 +135,24 @@ function createColorPicker(colorText) {
 
     rgbToHex(r, g, b);
 
-    return hexInput.value = `rgb(${r}, ${g}, ${b})`;
-  };
+    return (hexInput.value = `rgb(${r}, ${g}, ${b})`);
+  }
 
-  // Broken, as the digits do not equate to the propper hexadecimal values 
+  // Broken, as the digits do not equate to the propper hexadecimal values
   function rgbToHex(r, g, b) {
-
-    
     if (r.length === 1) {
-      r = '0' + r.toString(16);
-    }else if (g.length === 1) {
-      g = '0' + g.toString(16);
-    }
-    else if (b.length === 1) {
-      b = '0' + b.toString(16);
+      r = "0" + r.toString(16);
+    } else if (g.length === 1) {
+      g = "0" + g.toString(16);
+    } else if (b.length === 1) {
+      b = "0" + b.toString(16);
     }
     console.log(`rgb Values: ${r},${g},${b}`);
-    return rgbInput.value = `#${r}${g}${b}`;
+    return (rgbInput.value = `#${r}${g}${b}`);
   }
 
   //To test hslToRgb
-  hslToRgb(90,100,50);
+  hslToRgb(90, 100, 50);
 
   function setColorTypeAttributes(element, attributes) {
     for (let key in attributes) {
