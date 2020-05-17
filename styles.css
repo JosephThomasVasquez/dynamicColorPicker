@@ -28,6 +28,17 @@ div {
     border-radius: 15px 15px 0 0;
 }
 
+.title-text {
+    font-family: var(--font-main);
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+    width: 100%;
+    padding: 0;
+    margin: auto;
+    margin-left: 10px;
+}
+
 .fas {
     margin: 0 10px;
 }
@@ -54,7 +65,7 @@ h2, h3 {
 }
 
 .hex-input, .rgb-input {
-    width: 80%;
+    width: 50%;
     padding: 0.5%;
 }
 
@@ -130,7 +141,7 @@ h2, h3 {
 .toolbar-icon {
     color: white;
     font-size: 3rem;
-    width: 30vw;
+    width: 100%;
     padding: 1%;
     margin: auto;
     height: auto;
