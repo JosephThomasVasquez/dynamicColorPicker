@@ -3,7 +3,7 @@
 Uses the HSL color format for Hue, Saturation, and Lightness.
 * *Coming Soon: Ability to switch to and from RGB and hexcode.*
 
-View Project: https://josephthomasvasquez.github.io/dynamicColorPicker/
+View Project: [Dynamic Color Picker](https://josephthomasvasquez.github.io/dynamicColorPicker/)
 
 ## Features
 * Create as many color pickers as needed to experiment in finding a color palette for web design.
