@@ -147,7 +147,7 @@ function createColorPicker(colorText) {
     } else if (b.length === 1) {
       b = "0" + b.toString(16);
     }
-    console.log(`rgb Values: ${r},${g},${b}`);
+    console.log('hexValues', hexInput.value = `#${r}${g}${b}`);
     return (rgbInput.value = `#${r}${g}${b}`);
   }
 
