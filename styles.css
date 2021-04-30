@@ -76,7 +76,7 @@ h2, h3 {
     justify-content: center;
     align-items: center;
     padding: 0;
-    margin: auto;
+    margin: 0;
 }
 
 .container-1 {
@@ -90,6 +90,7 @@ h2, h3 {
 }
 
 .container-2 {
+    display: inline-block;
     width: 100%;
     margin: 1%;
     border: 2px solid rgba(0, 0, 0, 0.25);
@@ -99,16 +100,16 @@ h2, h3 {
 }
 
 .sample-container {
+    padding: 4%;
     width: 100%;
     margin: auto;
-    margin-bottom: 5%;
 }
 
 /* Color Sample */
 .color-sample {
     width: 90%;
-    padding: 15% 0;
-    margin: auto;
+    padding: 10em 0;
+    margin: 0 auto;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
